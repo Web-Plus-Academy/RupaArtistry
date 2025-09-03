@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Collections — Open Soon Popup</title>
+  <style>
+    :root{
+      --bg: #fafafa;
+      --card: #fff;
+      --muted: #666;
+      --accent: #9257ff;
+      --shadow: 0 8px 24px rgba(34,34,34,0.08);
+      --transition: 300ms cubic-bezier(.2,.9,.2,1);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,#f7f6ff 0%, #fff 100%);
+      color:#222;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px;
+    }
+
+    /* Page container */
+    .wrapper{
+      width:100%;
+      max-width:980px;
+      margin:0 auto;
+      background:var(--card);
+      border-radius:12px;
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+
+    .section-header{
+      text-align:left;
+      margin-bottom:18px;
+    }
+    .section-title{
+      margin:0 0 6px 0;
+      font-size:20px;
+      letter-spacing:0.2px;
+    }
+    .section-description{
+      color:var(--muted);
+      margin:0;
+      font-size:14px;
+    }
+
+    /* Products grid */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:18px;
+      margin-top:20px;
+    }
+    .product-card{
+      background:linear-gradient(180deg, #fff, #fbfbff);
+      border-radius:12px;
+      padding:14px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      align-items:center;
+      text-align:center;
+      box-shadow: 0 6px 18px rgba(40,40,80,0.04);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .product-card:hover{ transform: translateY(-6px); box-shadow: 0 18px 40px rgba(37,37,80,0.08); }
+
+    .product-image img{
+      width:120px;
+      height:120px;
+      object-fit:cover;
+      border-radius:10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    }
+    .product-header{ display:flex; gap:10px; align-items:center; justify-content:center; }
+    .product-icon{ font-size:22px; }
+    .product-title{ margin:0; font-size:16px; }
+    .product-description{ color:var(--muted); font-size:13px; margin:0; }
+
+    .btn{
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:10px;
+      cursor:pointer;
+      border:none;
+      font-weight:600;
+      font-size:14px;
+      transition: transform 160ms ease;
+      user-select:none;
+    }
+    .btn:active{ transform: translateY(1px); }
+    .btn-secondary{
+      background:transparent;
+      color:var(--accent);
+      border: 1.5px solid rgba(146,87,255,0.12);
+    }
+    .btn-full{
+      width:100%;
+      margin-top:6px;
+    }
+
+    /* Popup overlay & modal */
+    .overlay{
+      position:fixed;
+      inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      background:rgba(10,10,12,0.45);
+      z-index:1000;
+      padding:24px;
+      backdrop-filter: blur(3px);
+    }
+    .overlay.show{ display:flex; }
+
+    .modal{
+      width:100%;
+      max-width:520px;
+      background:linear-gradient(180deg,#ffffff,#fbfaff);
+      border-radius:14px;
+      box-shadow: 0 24px 60px rgba(20,18,40,0.25);
+      transform: translateY(20px) scale(.99);
+      opacity:0;
+      transition: opacity var(--transition), transform var(--transition);
+      position:relative;
+      overflow:hidden;
+      padding:22px;
+    }
+    .overlay.show .modal{
+      transform: translateY(0) scale(1);
+      opacity:1;
+    }
+
+    /* X close button on edge */
+    .modal .close-x{
+      position:absolute;
+      right:-12px;
+      top:-12px;
+      background:#fff;
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      cursor:pointer;
+      border: none;
+      font-size:18px;
+      color:#333;
+      transition: transform 140ms;
+    }
+    .modal .close-x:hover{ transform: rotate(18deg); }
+
+    .modal-header{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin-bottom:10px;
+    }
+    .modal-title{
+      font-size:18px;
+      margin:0;
+    }
+    .modal-sub{
+      color:var(--muted);
+      font-size:13px;
+      margin-top:4px;
+    }
+    .modal-body{
+      margin-top:8px;
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      flex-wrap:wrap;
+    }
+
+    .soon-badge{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      background:linear-gradient(90deg,#ffd6a5,#ffafbd);
+      font-weight:700;
+      font-size:13px;
+      color:#462a0f;
+      box-shadow: 0 6px 20px rgba(255,170,110,0.12);
+    }
+
+    /* small product list inside modal */
+    .collection-list{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+      gap:10px;
+      width:100%;
+    }
+    .mini-card{
+      background:#fff;
+      border-radius:10px;
+      padding:8px;
+      text-align:center;
+      box-shadow: 0 8px 18px rgba(16,16,40,0.04);
+      font-size:13px;
+    }
+    .mini-card img{ width:100%; height:74px; object-fit:cover; border-radius:6px; margin-bottom:8px; }
+
+    /* responsive */
+    @media (max-width:520px){
+      .modal{ padding:16px; }
+      .modal .close-x{ right:6px; top:6px; width:36px; height:36px;}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <div class="section-header">
+      <h2 class="section-title">Our Craft Collections</h2>
+      <p class="section-description">
+        Explore a curated range of handmade masterpieces — crafted with passion and precision.
+      </p>
+    </div>
+
+    <div class="grid">
+      <!-- Thread Earrings -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1542204637-8a1ff6b38f0e?w=800&q=60&auto=format&fit=crop" alt="Thread Earrings">
+        </div>
+        <div class="product-header">
+          <div class="product-icon">✨</div>
+          <h3 class="product-title">Thread Earrings</h3>
+        </div>
+        <p class="product-description">Stylish handcrafted earrings made with vibrant threads and beads.</p>
+        <button class="btn btn-secondary btn-full view-collection">View Collection</button>
+      </div>
+
+      <!-- Thread Bangles -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1520975912789-8b5f5a2f43fe?w=800&q=60&auto=format&fit=crop" alt="Thread Bangles">
+        </div>
+        <div class="product-header">
+          <div class="product-icon">💫</div>
+          <h3 class="product-title">Thread Bangles</h3>
+        </div>
+        <p class="product-description">Beautifully handcrafted bangles wrapped in vibrant threads.</p>
+        <button class="btn btn-secondary btn-full view-collection">View Collection</button>
+      </div>
+
+      <!-- Resin Arts -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1549887534-1ec91d6f3f5c?w=800&q=60&auto=format&fit=crop" alt="Resin Arts">
+        </div>
+        <div class="product-header">
+          <div class="product-icon">🎨</div>
+          <h3 class="product-title">Resin Arts</h3>
+        </div>
+        <p class="product-description">Unique resin creations featuring embedded flowers and glitter.</p>
+        <button class="btn btn-secondary btn-full view-collection">View Collection</button>
+      </div>
+
+      <!-- Pencil Art -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1526318472351-c75fcf070ee5?w=800&q=60&auto=format&fit=crop" alt="Pencil Art">
+        </div>
+        <div class="product-header">
+          <div class="product-icon">🖼️</div>
+          <h3 class="product-title">Pencil Portraits</h3>
+        </div>
+        <p class="product-description">Lifelike hand-drawn portraits crafted with fine detail.</p>
+        <button class="btn btn-secondary btn-full view-collection">View Collection</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overlay & Modal -->
+  <div class="overlay" id="overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="close-x" id="closeBtn" aria-label="Close popup">✕</button>
+
+      <div class="modal-header">
+        <div class="soon-badge">Opening Soon</div>
+        <div style="flex:1;">
+          <h3 id="modalTitle" class="modal-title">Our Full Collection — Coming Soon</h3>
+          <div class="modal-sub">Sign up to be notified when the collection launches, or explore a sneak peek below.</div>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="collection-list">
+          <!-- mini preview items -->
+          <div class="mini-card">
+            <img src="https://images.unsplash.com/photo-1542204637-8a1ff6b38f0e?w=800&q=60&auto=format&fit=crop" alt="Earrings">
+            <div>Thread Earrings</div>
+            <div style="color:var(--muted); font-size:12px;">From ₹299</div>
+          </div>
+
+          <div class="mini-card">
+            <img src="https://images.unsplash.com/photo-1520975912789-8b5f5a2f43fe?w=800&q=60&auto=format&fit=crop" alt="Bangles">
+            <div>Thread Bangles</div>
+            <div style="color:var(--muted); font-size:12px;">From ₹199</div>
+          </div>
+
+          <div class="mini-card">
+            <img src="https://images.unsplash.com/photo-1549887534-1ec91d6f3f5c?w=800&q=60&auto=format&fit=crop" alt="Resin">
+            <div>Resin Arts</div>
+            <div style="color:var(--muted); font-size:12px;">From ₹499</div>
+          </div>
+
+          <div class="mini-card">
+            <img src="https://images.unsplash.com/photo-1526318472351-c75fcf070ee5?w=800&q=60&auto=format&fit=crop" alt="Pencil">
+            <div>Pencil Portraits</div>
+            <div style="color:var(--muted); font-size:12px;">Delivered in 7 days</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:10px; margin-top:14px;">
+        <button class="btn btn-secondary" id="notifyBtn">Notify Me</button>
+        <button class="btn" id="closeFooter" style="background:var(--accent); color:#fff; border:none;">Close</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+  (function(){
+    const overlay = document.getElementById('overlay');
+    const closeBtn = document.getElementById('closeBtn');
+    const closeFooter = document.getElementById('closeFooter');
+    const viewBtns = document.querySelectorAll('.view-collection');
+    const notifyBtn = document.getElementById('notifyBtn');
+
+    function openModal(){
+      overlay.classList.add('show');
+      overlay.setAttribute('aria-hidden', 'false');
+      // trap focus (simple)
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(){
+      overlay.classList.remove('show');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    viewBtns.forEach(btn => btn.addEventListener('click', openModal));
+    closeBtn.addEventListener('click', closeModal);
+    closeFooter.addEventListener('click', closeModal);
+
+    // close when clicking outside modal content
+    overlay.addEventListener('click', (e) => {
+      if(e.target === overlay) closeModal();
+    });
+
+    // ESC key to close
+    document.addEventListener('keydown', (e) => {
+      if(e.key === "Escape" && overlay.classList.contains('show')) closeModal();
+    });
+
+    // example Notify Me handler (placeholder)
+    notifyBtn.addEventListener('click', () => {
+      notifyBtn.textContent = 'Subscribed ✓';
+      notifyBtn.disabled = true;
+      notifyBtn.style.opacity = 0.9;
+      // you can integrate ajax call here to save user email/phone
+      setTimeout(() => {
+        // auto-close after a short success feedback (optional)
+        closeModal();
+      }, 900);
+    });
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rupa's Artisanal Moments</title>
+    <meta name="description"
+        content="Discover unique handmade crafts at Rupa's Artisanal Moments. Every piece tells a story of art, culture, and passion. Traditional craftsmanship with a modern twist.">
+    <meta name="author" content="Rupa's Artisanal Moments">
+
+    <meta property="og:title" content="Rupa's Artisanal Moments - Handcrafted Art Where Creativity Meets Tradition">
+    <meta property="og:description"
+        content="Discover unique handmade crafts at Rupa's Artisanal Moments. Every piece tells a story of art, culture, and passion. Traditional craftsmanship with a modern twist.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="shortcut icon" href="./images/ram-logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <svg id="thread">
+        <defs>
+            <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#000000" />
+                <stop offset="50%" stop-color="#ffaa00" />
+                <stop offset="100%" stop-color="#ec9900" />
+            </linearGradient>
+            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="4" result="b" />
+                <feMerge>
+                    <feMergeNode in="b" />
+                    <feMergeNode in="SourceGraphic" />
+                </feMerge>
+            </filter>
+        </defs>
+        <path id="threadGlow" fill="none" stroke="#ffffff" stroke-opacity="0.25" filter="url(#glow)" />
+        <path id="threadMain" class="stitch" fill="none" stroke="url(#gold)" />
+    </svg>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+
+                <div class="logo">
+                    <h1> <img src="./images/ram-logo.png" height="50" alt=""> Rupa's Artisanal Moments</h1>
+                </div>
+
+                <nav class="nav">
+                    <a href="#about">About</a>
+                    <a href="#crafts">Crafts</a>
+                    <a href="#story">Story</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+
+                <button class="shop-btn">Cart</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background"></div>
+
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    Where <span class="text-gradient">Creativity</span>
+                    <br>
+                    Meets <span class="text-gradient">Tradition</span>
+                </h1>
+
+                <p class="hero-description">
+                    We revive handmade craftsmanship with a modern twist. Every product
+                    is crafted with love and tells a unique story of art, culture, and passion.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#crafts"><button class="btn btn-primary">Explore Crafts</button></a>
+                    <a href="#story"><button class="btn btn-secondary">Our Story</button></a>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="scroll-mouse">
+                <div class="scroll-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2 class="section-title">
+                        Crafting Stories,<br>One Piece at a Time
+                    </h2>
+
+                    <p class="about-text">
+                        At Rupa's Artisanal Moments, we believe that every handcrafted piece
+                        carries the soul of its creator. Our journey began with a simple vision:
+                        to preserve traditional craftsmanship while embracing contemporary design.
+                    </p>
+
+                    <p class="about-text">
+                        Each item in our collection is meticulously crafted by skilled artisans
+                        who have inherited techniques passed down through generations. We honor
+                        their heritage while creating pieces that fit seamlessly into modern life.
+                    </p>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3 class="stat-number">500+</h3>
+                            <p class="stat-label">Unique Pieces</p>
+                        </div>
+
+                        <div class="stat-card">
+                            <h3 class="stat-number">100%</h3>
+                            <p class="stat-label">Handmade with Love</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-image">
+                    <img src="./images/about.jpg" alt="Traditional crafting workshop">
+                    <div class="decorative-blur"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Showcase -->
+    <section id="crafts" class="products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Craft Collections</h2>
+                <p class="section-description">
+                    Discover our curated selection of handmade treasures, each category
+                    representing centuries of cultural heritage and artistic excellence.
+                </p>
+            </div>
+
+            <div class="featured-image">
+                <img src="./images/products-showcase.jpg" alt="Artisanal products showcase">
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="./images/resin-arts.jpg" alt="Resin Arts">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-header">
+                            <div class="product-icon">🎨</div>
+                            <h3 class="product-title">Resin Arts</h3>
+                        </div>
+                        <p class="product-description">
+                            Unique resin creations featuring embedded flowers, glitter, and artistic patterns — perfect
+                            for décor or gifting.
+                        </p>
+                        <button class="btn btn-secondary btn-full">View Collection</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="./images/thread-bangles.jpg" alt="Thread Bangles">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-header">
+                            <div class="product-icon">💫</div>
+                            <h3 class="product-title">Thread Bangles</h3>
+                        </div>
+                        <p class="product-description">
+                            Beautifully handcrafted bangles wrapped in vibrant threads, blending tradition with modern
+                            elegance.
+                        </p>
+                        <button class="btn btn-secondary btn-full">View Collection</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="./images/thread-earrings.jpg" alt="Thread Earrings">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-header">
+                            <div class="product-icon">✨</div>
+                            <h3 class="product-title">Thread Earrings</h3>
+                        </div>
+                        <p class="product-description">
+                            Stylish handcrafted earrings made with vibrant threads and beads — a perfect blend of
+                            tradition and modern fashion.
+                        </p>
+                        <button class="btn btn-secondary btn-full">View Collection</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="./images/art.png" alt="Handmade Arts & Crafts">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-header">
+                            <div class="product-icon">🖼️</div>
+                            <h3 class="product-title">Realistic Customized Pencil Art</h3>
+                        </div>
+                        <p class="product-description">
+                            Lifelike hand-drawn portraits with fine detail and emotion <br> <b>✅Delivered in just 7
+                                days.</b>
+                        </p>
+
+
+                        <button class="btn btn-secondary btn-full" onclick="bookNow()">Book Now !</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section id="story" class="stories">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Stories Behind the Art</h2>
+                <p class="section-description">
+                    Meet the talented artisans whose passion and heritage bring our creations to life.
+                    Each piece tells their story of dedication, tradition, and artistic vision.
+                </p>
+            </div>
+
+            <div class="stories-grid">
+                <div class="story-card">
+                    <div class="story-content">
+                        <div class="artisan-avatar">
+                            <img src="./images/rupa.jpg" height="200" alt="">
+                        </div>
+                        <img src="./images/hashes.png" alt="" class="hashes">
+                        <blockquote class="story-quote">
+                            "Art for me is more than creation—it’s emotion woven into every detail.
+                            Each piece I craft carries a part of my soul, turning simple materials into memories that
+                            last forever."
+                        </blockquote>
+                        <div class="artisan-info">
+                            <h4 class="artisan-name">Rupa Sree D</h4>
+                            <p class="artisan-role">Art & Craft</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="story-card">
+                    <div class="story-content">
+                        <div class="artisan-avatar">
+                            <img src="./images/saran.jpg" height="200" alt="">
+                        </div>
+                        <img src="./images/hashes.png" alt="" class="hashes">
+                        <blockquote class="story-quote">
+                            "Every stroke and every detail I create is a reflection of emotion and patience.
+                            For me, art isn’t just about crafting objects—it’s about telling stories that live on
+                            forever."
+                        </blockquote>
+
+                        <div class="artisan-info">
+                            <h4 class="artisan-name">Saran Velmurugan</h4>
+                            <p class="artisan-role">Artist & Designer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="journey-section">
+                <h3 class="journey-title">Join Our Artisanal Journey</h3>
+                <p class="journey-text">
+                    Every purchase supports these incredible artisans and helps preserve
+                    traditional craftsmanship for future generations. Together, we're not
+                    just creating beautiful objects—we're keeping cultural heritage alive.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3 class="footer-title">Rupa's Artisanal Moments</h3>
+                    <p class="footer-description">
+                        Connecting hearts through handmade art. Every piece tells a story,
+                        every story creates a moment, every moment becomes a cherished memory.
+                    </p>
+                    <div class="social-buttons">
+                        <button class="btn btn-secondary btn-small">Instagram</button>
+                        <button class="btn btn-secondary btn-small">Facebook</button>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-nav">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#crafts">Our Crafts</a></li>
+                        <li><a href="#story">Our Story</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4 class="footer-heading">Get in Touch</h4>
+                    <p class="contact-text">
+                        Ready to bring artisanal beauty into your life? Let's create something beautiful together.
+                    </p>
+                    <button class="btn btn-secondary btn-large btn-full">Start Your Journey</button>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Rupa's Artisanal Moments. Crafted with love and tradition.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <!-- SweetAlert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>
