@@ -302,7 +302,7 @@ body {
 }
 
 .btn-secondary {
-    background-color: var(--secondary);
+    background-color: rgb(255, 205, 113);
     color: var(--secondary-foreground);
     box-shadow: var(--shadow-soft);
     font-weight: bold;
@@ -717,6 +717,12 @@ body {
     90% {
         transform: translate(-50%, -4px);
     }
+}
+
+.footer-bottom a{
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
 }
 
 
