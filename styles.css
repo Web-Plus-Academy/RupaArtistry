@@ -63,11 +63,29 @@ svg#thread {
     }
 }
 
+/* Toggle button styling */
+#thread-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgb(0, 0, 0);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 30px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: background 0.3s ease;
+    z-index: 9999;
+}
+
 /* Hide thread effect on small screens (phones) */
 @media (max-width: 768px) {
-    svg#thread {
+    svg#thread, #thread-toggle{
         display: none;
     }
+    
 }
 
 

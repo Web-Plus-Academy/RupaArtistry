@@ -331,15 +331,15 @@ function openLaunchingSoon(productName, imageUrl) {
             </p>
         `,
         confirmButtonText: "📱 Notify Me",
-        confirmButtonColor: "#ff6f61",
+        confirmButtonColor: "#ff695cff",
         background: "#fff",
         showCloseButton: true, // X button at the corner
         allowOutsideClick: false,
         allowEscapeKey: true
     }).then((result) => {
         if (result.isConfirmed) {
-            let phoneNumber = "918886200010"; // Your WhatsApp number
-            let message = `Hi, I would like to be notified when the ${productName} collection launches!`;
+            let phoneNumber = "919573537417"; // Your WhatsApp number
+            let message = `Hi, I would like to be notified when the "${productName}" collection launches!`;
             let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
             window.open(url, "_blank");
         }
@@ -358,4 +358,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+const thread = document.getElementById("thread");
+const toggleBtn = document.getElementById("thread-toggle");
+
+toggleBtn.addEventListener("click", () => {
+    if (thread.style.display === "none") {
+        thread.style.display = "block";
+        toggleBtn.textContent = "✨ Hide Thread";
+        toggleBtn.style.backgroundColor = "black"
+        toggleBtn.style.color = "white"
+    } else {
+        thread.style.display = "none";
+        toggleBtn.textContent = "✨ Show Thread";
+        toggleBtn.style.backgroundColor = "white"
+        toggleBtn.style.color = "black"
+    }
+});
+
+// Default: thread is ON, button says hide
+toggleBtn.textContent = "✨ Hide Thread";
 
