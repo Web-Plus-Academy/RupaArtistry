@@ -63,6 +63,14 @@ svg#thread {
     }
 }
 
+/* Hide thread effect on small screens (phones) */
+@media (max-width: 768px) {
+    svg#thread {
+        display: none;
+    }
+}
+
+
 /* Reset and Base Styles */
 * {
     margin: 0;
