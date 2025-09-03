@@ -520,11 +520,11 @@ body {
 }
 
 .story-card {
+    flex: 1 1 300px;  /* Grow, shrink, base width */
+    max-width: 500px; /* Prevent overly large cards */
     background-color: rgb(255, 231, 196);
     box-shadow: var(--shadow-soft);
     transition: var(--transition-smooth);
-    height: 100%;
-    width: 40%;
     border: 1px solid rgba(0, 0, 0, 0.6);
     border-radius: 5px 50px;
 }
