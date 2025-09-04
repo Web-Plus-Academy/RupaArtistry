@@ -351,7 +351,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".product-card .btn-full").forEach((btn, index) => {
         btn.addEventListener("click", () => {
              if (index === 0) openLaunchingSoon("Resin Arts", "./images/resin-arts.jpg");
-            if (index === 1) openLaunchingSoon("Thread Bangles", "./images/thread-bangles.jpg");
+            // if (index === 1) openLaunchingSoon("Thread Bangles", "./images/thread-bangles.jpg");
             if (index === 2) openLaunchingSoon("Thread Earrings", "./images/thread-earrings.jpg");
             // if (index === 3) openLaunchingSoon("Customized Pencil Art", "./images/art.png");
         });
