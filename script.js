@@ -350,7 +350,7 @@ function openLaunchingSoon(productName, imageUrl) {
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".product-card .btn-full").forEach((btn, index) => {
         btn.addEventListener("click", () => {
-            if (index === 0) openLaunchingSoon("Thread Bangles", "./images/thread-bangles.jpg");
+            // if (index === 0) openLaunchingSoon("Thread Bangles", "./images/thread-bangles.jpg");
             // if (index === 1) openLaunchingSoon("Customized Pencil Art", "./images/art.png");
              if (index === 2) openLaunchingSoon("Resin Arts", "./images/resin-arts.jpg");
             if (index === 3) openLaunchingSoon("Thread Earrings", "./images/thread-earrings.jpg");

@@ -3,227 +3,649 @@ const sampleProducts = [
     // Traditional Bangles
     {
         id: '1',
-        name: 'Royal Gold Traditional Bangles Set',
-        price: 2500,
-        originalPrice: 3000,
-        image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        rating: 4.8,
-        reviewCount: 125,
-        category: 'traditional',
-        material: 'gold',
+        name: 'CUSTOM',
+        price: '',
+        // originalPrice: 150,
+        image: './images/custom.jpg',
+        rating: 5,
+        reviewCount: 3,
+        category: 'all',
+        material: 'all',
+        inStock: true,
+        isNew: true,
+        isBestseller: false,
+        qty:'2 Sets'
+    },
+    {
+        id: '21',
+        name: 'Traditional & Thin - 36 Sets',
+        price: 4320,
+        originalPrice: 5400,
+        image: './images/allthread.jpg',
+        rating: 4.9,
+        reviewCount: 5,
+        category: 'Traditional',
+        material: 'thin',
         inStock: true,
         isNew: false,
-        isBestseller: true,
+        isBestseller: false,
+        qty:'72 Bangles',
+        size:'2/4, 2/6, 2/8'
+    },
+    {
+        id: '22',
+        name: 'Traditional & Medium - 36 Sets',
+        price: 4500,
+        originalPrice: 5600,
+        image: './images/traditional.jpg',
+        rating: 4.8,
+        reviewCount: 2,
+        category: 'Traditional',
+        material: 'medium',
+        inStock: true,
+        isNew: false,
+        isBestseller: false,
+        qty:'72 Bangles',
+        size:'2/4, 2/6, 2/8'
+    },
+    {
+        id: '23',
+        name: 'Traditional & Large - 36 Sets',
+        price: 4650,
+        originalPrice: 5800,
+        image: './images/trad-large.jpg',
+        rating: 5,
+        reviewCount: 4,
+        category: 'Traditional',
+        material: 'large',
+        inStock: true,
+        isNew: false,
+        isBestseller: false,
+        qty:'72 Bangles',
+        size:'2/4, 2/6, 2/8'
     },
     {
         id: '2',
-        name: 'Classic Silver Thread Work Bangles',
-        price: 1200,
-        originalPrice: 1500,
-        image: 'https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        rating: 4.6,
-        reviewCount: 89,
-        category: 'traditional',
-        material: 'silver',
+        name: 'Plain & Thin - 36 Sets',
+        price: 2160,
+        originalPrice: 2700,
+        image: './images/plain-thin.jpg',
+        rating: 4.9,
+        reviewCount: 10,
+        category: 'Plain Silk Thread',
+        material: 'thin',
         inStock: true,
         isNew: false,
         isBestseller: false,
+        qty:'72 Bangles',
+        size:'2/4, 2/6, 2/8'
     },
     {
         id: '3',
-        name: 'Antique Brass Traditional Set',
-        price: 800,
-        image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        rating: 4.4,
-        reviewCount: 67,
-        category: 'traditional',
-        material: 'brass',
+        name: 'Plain & Medium - 36 Sets',
+        price: 2250,
+        originalPrice: 2800,
+        image: './images/plain-medium.jpg',
+        rating: 4.9,
+        reviewCount: 4,
+        category: 'Plain Silk Thread',
+        material: 'medium',
         inStock: true,
         isNew: false,
         isBestseller: false,
+        qty:'72 Bangles',
+        size:'2/4, 2/6, 2/8'
     },
     {
         id: '4',
-        name: 'Heritage Gold Kundan Bangles',
-        price: 4500,
-        originalPrice: 5200,
-        image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        rating: 4.9,
-        reviewCount: 156,
-        category: 'traditional',
-        material: 'gold',
-        inStock: false,
-        isNew: false,
-        isBestseller: true,
-    },
-
-    // Modern Bangles
-    {
-        id: '5',
-        name: 'Contemporary Rose Gold Slim Bangles',
-        price: 1800,
-        image: 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        rating: 4.7,
-        reviewCount: 94,
-        category: 'modern',
-        material: 'rose-gold',
+        name: 'Plain & Large - 36 Sets',
+        price: 2400,
+        originalPrice: 3000,
+        image: './images/plain-large.jpg',
+        rating: 5,
+        reviewCount: 3,
+        category: 'Plain Silk Thread',
+        material: 'large',
         inStock: true,
-        isNew: true,
+        isNew: false,
         isBestseller: false,
+        qty:'72 sets',
+        size:'2/4, 2/6, 2/8'
+    },
+    {
+        id: '24',
+        name: 'Traditional & Thin - 24 Sets',
+        price: 3200,
+        originalPrice: 3600,
+        image: './images/allthread.jpg',
+        rating: 5,
+        reviewCount: 1,
+        category: 'Traditional',
+        material: 'thin',
+        inStock: true,
+        isNew: false,
+        isBestseller: false,
+        qty:'48 Bangles',
+        size:'2/4, 2/6, 2/8'
+    },
+    {
+        id: '25',
+        name: 'Traditional & Medium - 24 Sets',
+        price: 3400,
+        originalPrice: 3800,
+        image: './images/traditional.jpg',
+        rating: 4.9,
+        reviewCount: 15,
+        category: 'Traditional',
+        material: 'medium',
+        inStock: true,
+        isNew: false,
+        isBestseller: false,
+        qty:'48 Bangles',
+        size:'2/4, 2/6, 2/8'
+    },
+     {
+        id: '26',
+        name: 'Traditional & Large - 24 Sets',
+        price: 3550,
+        originalPrice: 4000,
+        image: './images/trad-large.jpg',
+        rating: 5,
+        reviewCount: 2,
+        category: 'Traditional',
+        material: 'large',
+        inStock: true,
+        isNew: false,
+        isBestseller: false,
+        qty:'48 Bangles',
+        size:'2/4, 2/6, 2/8'
+    },
+     {
+        id: '5',
+        name: 'Plain & Thin - 24 Sets',
+        price: 1600,
+        originalPrice: 1800,
+        image: './images/plain-thin.jpg',
+        rating: 4.8,
+        reviewCount: 6,
+        category: 'Plain Silk Thread',
+        material: 'thin',
+        inStock: true,
+        isNew: false,
+        isBestseller: false,
+        qty:'48 Bangles',
+        size:'2/4, 2/6, 2/8'
     },
     {
         id: '6',
-        name: 'Minimalist Silver Thread Bangles',
-        price: 950,
-        originalPrice: 1200,
-        image: 'https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        rating: 4.5,
-        reviewCount: 73,
-        category: 'modern',
-        material: 'silver',
+        name: 'Plain & Medium - 24 Sets',
+        price: 1700,
+        originalPrice: 1900,
+        image: './images/plain-medium.jpg',
+        rating: 4.8,
+        reviewCount: 9,
+        category: 'Plain Silk Thread',
+        material: 'medium',
         inStock: true,
         isNew: false,
         isBestseller: false,
+        qty:'48 Bangles',
+        size:'2/4, 2/6, 2/8'
     },
     {
         id: '7',
-        name: 'Geometric Gold Pattern Bangles',
-        price: 3200,
-        image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        rating: 4.6,
-        reviewCount: 108,
-        category: 'modern',
-        material: 'gold',
-        inStock: true,
-        isNew: true,
-        isBestseller: false,
-    },
-    {
-        id: '8',
-        name: 'Sleek Platinum Thread Bangles',
-        price: 5500,
-        originalPrice: 6000,
-        image: 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        name: 'Plain & Large - 24 Sets',
+        price: 1790,
+        originalPrice: 2000,
+        image: './images/plain-large.jpg',
         rating: 4.8,
-        reviewCount: 142,
-        category: 'modern',
-        material: 'platinum',
+        reviewCount: 7,
+        category: 'Plain Silk Thread',
+        material: 'large',
         inStock: true,
         isNew: false,
-        isBestseller: true,
+        isBestseller: false,
+        qty:'72 sets',
+        size:'2/4, 2/6, 2/8'
+    },
+        {
+        id: '25',
+        name: 'Traditional & Thin - 12 Sets',
+        price: 1674,
+        originalPrice: 1800,
+        image: './images/allthread.jpg',
+        rating: 5,
+        reviewCount: 4,
+        category: 'Traditional',
+        material: 'thin',
+        inStock: true,
+        isNew: false,
+        isBestseller: false,
+        qty:'24 Bangles',
+        size:'2/4, 2/6, 2/8'
+    },
+    {
+        id: '26',
+        name: 'Traditional & Medium - 12 Sets',
+        price: 1774,
+        originalPrice: 1900,
+        image: './images/traditional.jpg',
+        rating: 4.8,
+        reviewCount: 8,
+        category: 'Traditional',
+        material: 'medium',
+        inStock: true,
+        isNew: false,
+        isBestseller: false,
+        qty:'24 Bangles',
+        size:'2/4, 2/6, 2/8'
+    },
+     {
+        id: '27',
+        name: 'Traditional & Large - 12 Sets',
+        price: 1870,
+        originalPrice: 2000,
+        image: './images/trad-large.jpg',
+        rating: 5,
+        reviewCount: 2,
+        category: 'Traditional',
+        material: 'large',
+        inStock: true,
+        isNew: false,
+        isBestseller: false,
+        qty:'24 Bangles',
+        size:'2/4, 2/6, 2/8'
     },
 
-    // Designer Bangles
     {
-        id: '9',
-        name: 'Artistic Designer Gold Bangles',
-        price: 6500,
-        originalPrice: 7500,
-        image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        rating: 4.9,
-        reviewCount: 187,
-        category: 'designer',
-        material: 'gold',
+        id: '8',
+        name: 'Plain & Thin - 12 Sets',
+        price: 837,
+        originalPrice: 900,
+        image: './images/plain-thin.jpg',
+        rating: 4.8,
+        reviewCount: 10,
+        category: 'Plain Silk Thread',
+        material: 'thin',
         inStock: true,
         isNew: false,
-        isBestseller: true,
+        isBestseller: false,
+        qty:'24 Bangles',
+        size:'2/4, 2/6, 2/8'
+    },
+
+      {
+        id: '9',
+        name: 'Plain & Medium - 12 Sets',
+        price: 929,
+        originalPrice: 1000,
+        image: './images/plain-medium.jpg',
+        rating: 4.7,
+        reviewCount: 24,
+        category: 'Plain Silk Thread',
+        material: 'medium',
+        inStock: true,
+        isNew: false,
+        isBestseller: false,
+        qty:'24 Bangles',
+        size:'2/4, 2/6, 2/8'
     },
     {
         id: '10',
-        name: 'Unique Silver Wire Art Bangles',
-        price: 2200,
-        image: 'https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        rating: 4.7,
-        reviewCount: 95,
-        category: 'designer',
-        material: 'silver',
+        name: 'Plain & Large - 12 Sets',
+        price: 1019,
+        originalPrice: 1100,
+        image: './images/plain-large.jpg',
+        rating: 4.8,
+        reviewCount: 5,
+        category: 'Plain Silk Thread',
+        material: 'large',
         inStock: true,
-        isNew: true,
+        isNew: false,
         isBestseller: false,
+        qty:'24 sets',
+        size:'2/4, 2/6, 2/8'
     },
     {
         id: '11',
-        name: 'Contemporary Rose Gold Sculpture',
-        price: 4200,
-        originalPrice: 4800,
-        image: 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        name: 'Plain & Thin - 6 Sets',
+        price: 429,
+        originalPrice: 450,
+        image: './images/plain-thin.jpg',
         rating: 4.8,
-        reviewCount: 129,
-        category: 'designer',
-        material: 'rose-gold',
+        reviewCount: 12,
+        category: 'Plain Silk Thread',
+        material: 'thin',
         inStock: true,
         isNew: false,
         isBestseller: false,
+        qty:'12 Bangles',
+        size:'2/4, 2/6, 2/8'
     },
     {
         id: '12',
-        name: 'Avant-garde Platinum Design',
-        price: 8500,
-        image: 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        rating: 4.6,
-        reviewCount: 76,
-        category: 'designer',
-        material: 'platinum',
-        inStock: false,
-        isNew: true,
-        isBestseller: false,
-    },
-
-    // Antique Bangles
-    {
-        id: '13',
-        name: 'Vintage Gold Filigree Bangles',
-        price: 3800,
-        originalPrice: 4500,
-        image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        rating: 4.7,
-        reviewCount: 112,
-        category: 'antique',
-        material: 'gold',
+        name: 'Plain & Medium - 6 Sets',
+        price: 475,
+        originalPrice: 500,
+        image: './images/plain-medium.jpg',
+        rating: 4.9,
+        reviewCount: 8,
+        category: 'Plain Silk Thread',
+        material: 'medium',
         inStock: true,
         isNew: false,
         isBestseller: false,
+        qty:'12 Bangles',
+        size:'2/4, 2/6, 2/8'
+    },
+    {
+        id: '13',
+        name: 'Plain & Large - 6 Sets',
+        price: 520,
+        originalPrice: 550,
+        image: './images/plain-large.jpg',
+        rating: 4.7,
+        reviewCount: 15,
+        category: 'Plain Silk Thread',
+        material: 'large',
+        inStock: true,
+        isNew: false,
+        isBestseller: false,
+        qty:'12 sets',
+        size:'2/4, 2/6, 2/8'
     },
     {
         id: '14',
-        name: 'Heirloom Silver Engraved Set',
-        price: 1600,
-        image: 'https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        rating: 4.5,
-        reviewCount: 85,
-        category: 'antique',
-        material: 'silver',
+        name: 'Plain & Thin - 3 Sets',
+        price: 225,
+        // originalPrice: 150,
+        image: './images/plain-thin.jpg',
+        rating: 4.8,
+        reviewCount: 12,
+        category: 'Plain Silk Thread',
+        material: 'thin',
         inStock: true,
         isNew: false,
         isBestseller: false,
+        qty:'6 Bangles',
+        size:'2/4, 2/6, 2/8'
     },
-    {
+        {
         id: '15',
-        name: 'Colonial Era Brass Bangles',
-        price: 1100,
-        originalPrice: 1400,
-        image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        rating: 4.3,
-        reviewCount: 69,
-        category: 'antique',
-        material: 'brass',
+        name: 'Plain & Medium - 3 Sets',
+        price: 250,
+        // originalPrice: 500,
+        image: './images/plain-medium.jpg',
+        rating: 4.8,
+        reviewCount: 30,
+        category: 'Plain Silk Thread',
+        material: 'medium',
         inStock: true,
         isNew: false,
         isBestseller: false,
+        qty:'6 Bangles',
+        size:'2/4, 2/6, 2/8'
     },
     {
         id: '16',
-        name: 'Victorian Rose Gold Collection',
-        price: 5200,
-        image: 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        name: 'Plain & Large - 3 Sets',
+        price: 275,
+        // originalPrice: 550,
+        image: './images/plain-large.jpg',
         rating: 4.8,
-        reviewCount: 134,
-        category: 'antique',
-        material: 'rose-gold',
+        reviewCount: 25,
+        category: 'Plain Silk Thread',
+        material: 'large',
         inStock: true,
         isNew: false,
-        isBestseller: true,
+        isBestseller: false,
+        qty:'6 sets',
+        size:'2/4, 2/6, 2/8'
     },
+    {
+        id: '17',
+        name: 'Plain & Thin - 2 Sets',
+        price: 150,
+        // originalPrice: 150,
+        image: './images/plain-thin.jpg',
+        rating: 4.9,
+        reviewCount: 15,
+        category: 'Plain Silk Thread',
+        material: 'thin',
+        inStock: true,
+        isNew: false,
+        isBestseller: false,
+        qty:'4 Bangles',
+        size:'2/4, 2/6, 2/8'
+    },
+        {
+        id: '18',
+        name: 'Plain & Medium - 2 Sets',
+        price: 165,
+        // originalPrice: 500,
+        image: './images/plain-medium.jpg',
+        rating: 4.9,
+        reviewCount: 33,
+        category: 'Plain Silk Thread',
+        material: 'medium',
+        inStock: true,
+        isNew: false,
+        isBestseller: false,
+        qty:'4 Bangles',
+        size:'2/4, 2/6, 2/8'
+    },
+    {
+        id: '19',
+        name: 'Plain & Large - 2 Sets',
+        price: 180,
+        // originalPrice: 550,
+        image: './images/plain-large.jpg',
+        rating: 4.9,
+        reviewCount: 36,
+        category: 'Plain Silk Thread',
+        material: 'large',
+        inStock: true,
+        isNew: false,
+        isBestseller: false,
+        qty:'4 sets',
+        size:'2/4, 2/6, 2/8'
+    },
+
+    // {
+    //     id: '33',
+    //     name: 'Antique Brass Traditional Set',
+    //     price: 800,
+    //     image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    //     rating: 4.4,
+    //     reviewCount: 67,
+    //     category: 'traditional',
+    //     material: 'brass',
+    //     inStock: true,
+    //     isNew: false,
+    //     isBestseller: false,
+    // },
+    // {
+    //     id: '4',
+    //     name: 'Heritage Gold Kundan Bangles',
+    //     price: 4500,
+    //     originalPrice: 5200,
+    //     image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    //     rating: 4.9,
+    //     reviewCount: 156,
+    //     category: 'traditional',
+    //     material: 'gold',
+    //     inStock: false,
+    //     isNew: false,
+    //     isBestseller: true,
+    // },
+
+    // // Modern Bangles
+    // {
+    //     id: '5',
+    //     name: 'Contemporary Rose Gold Slim Bangles',
+    //     price: 1800,
+    //     image: 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    //     rating: 4.7,
+    //     reviewCount: 94,
+    //     category: 'modern',
+    //     material: 'rose-gold',
+    //     inStock: true,
+    //     isNew: true,
+    //     isBestseller: false,
+    // },
+    // {
+    //     id: '6',
+    //     name: 'Minimalist Silver Thread Bangles',
+    //     price: 950,
+    //     originalPrice: 1200,
+    //     image: 'https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    //     rating: 4.5,
+    //     reviewCount: 73,
+    //     category: 'modern',
+    //     material: 'silver',
+    //     inStock: true,
+    //     isNew: false,
+    //     isBestseller: false,
+    // },
+    // {
+    //     id: '7',
+    //     name: 'Geometric Gold Pattern Bangles',
+    //     price: 3200,
+    //     image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    //     rating: 4.6,
+    //     reviewCount: 108,
+    //     category: 'modern',
+    //     material: 'gold',
+    //     inStock: true,
+    //     isNew: true,
+    //     isBestseller: false,
+    // },
+    // {
+    //     id: '8',
+    //     name: 'Sleek Platinum Thread Bangles',
+    //     price: 5500,
+    //     originalPrice: 6000,
+    //     image: 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    //     rating: 4.8,
+    //     reviewCount: 142,
+    //     category: 'modern',
+    //     material: 'platinum',
+    //     inStock: true,
+    //     isNew: false,
+    //     isBestseller: true,
+    // },
+
+    // // Designer Bangles
+    // {
+    //     id: '9',
+    //     name: 'Artistic Designer Gold Bangles',
+    //     price: 6500,
+    //     originalPrice: 7500,
+    //     image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    //     rating: 4.9,
+    //     reviewCount: 187,
+    //     category: 'designer',
+    //     material: 'gold',
+    //     inStock: true,
+    //     isNew: false,
+    //     isBestseller: true,
+    // },
+    // {
+    //     id: '10',
+    //     name: 'Unique Silver Wire Art Bangles',
+    //     price: 2200,
+    //     image: 'https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    //     rating: 4.7,
+    //     reviewCount: 95,
+    //     category: 'designer',
+    //     material: 'silver',
+    //     inStock: true,
+    //     isNew: true,
+    //     isBestseller: false,
+    // },
+    // {
+    //     id: '11',
+    //     name: 'Contemporary Rose Gold Sculpture',
+    //     price: 4200,
+    //     originalPrice: 4800,
+    //     image: 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    //     rating: 4.8,
+    //     reviewCount: 129,
+    //     category: 'designer',
+    //     material: 'rose-gold',
+    //     inStock: true,
+    //     isNew: false,
+    //     isBestseller: false,
+    // },
+    // {
+    //     id: '12',
+    //     name: 'Avant-garde Platinum Design',
+    //     price: 8500,
+    //     image: 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    //     rating: 4.6,
+    //     reviewCount: 76,
+    //     category: 'designer',
+    //     material: 'platinum',
+    //     inStock: false,
+    //     isNew: true,
+    //     isBestseller: false,
+    // },
+
+    // // Antique Bangles
+    // {
+    //     id: '13',
+    //     name: 'Vintage Gold Filigree Bangles',
+    //     price: 3800,
+    //     originalPrice: 4500,
+    //     image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    //     rating: 4.7,
+    //     reviewCount: 112,
+    //     category: 'antique',
+    //     material: 'gold',
+    //     inStock: true,
+    //     isNew: false,
+    //     isBestseller: false,
+    // },
+    // {
+    //     id: '14',
+    //     name: 'Heirloom Silver Engraved Set',
+    //     price: 1600,
+    //     image: 'https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    //     rating: 4.5,
+    //     reviewCount: 85,
+    //     category: 'antique',
+    //     material: 'silver',
+    //     inStock: true,
+    //     isNew: false,
+    //     isBestseller: false,
+    // },
+    // {
+    //     id: '15',
+    //     name: 'Colonial Era Brass Bangles',
+    //     price: 1100,
+    //     originalPrice: 1400,
+    //     image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    //     rating: 4.3,
+    //     reviewCount: 69,
+    //     category: 'antique',
+    //     material: 'brass',
+    //     inStock: true,
+    //     isNew: false,
+    //     isBestseller: false,
+    // },
+    // {
+    //     id: '16',
+    //     name: 'Victorian Rose Gold Collection',
+    //     price: 5200,
+    //     image: 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    //     rating: 4.8,
+    //     reviewCount: 134,
+    //     category: 'antique',
+    //     material: 'rose-gold',
+    //     inStock: true,
+    //     isNew: false,
+    //     isBestseller: true,
+    // },
 ];
 
 // Categories data
@@ -231,42 +653,44 @@ const categories = [
     { 
         id: 'all', 
         name: 'All Bangles', 
-        image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 
-        count: 16 
+        image: './images/all.jpg', 
+        count: 28 
     },
     { 
-        id: 'traditional', 
+        id: 'Plain Silk Thread', 
+        name: 'Plain Silk Thread', 
+        image: './images/plain-medium.jpg', 
+        count: 18 
+    },
+    { 
+        id: 'Traditional', 
         name: 'Traditional', 
-        image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 
-        count: 4 
+        image: './images/traditional.jpg', 
+        count: 9 
     },
     { 
-        id: 'modern', 
-        name: 'Modern', 
-        image: 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 
-        count: 4 
+        id: 'Marriage Special', 
+        name: 'Marriage Special', 
+        image: './images/marriage.jpg', 
+        count: 0
     },
     { 
-        id: 'designer', 
-        name: 'Designer', 
-        image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 
-        count: 4 
-    },
-    { 
-        id: 'antique', 
-        name: 'Antique', 
-        image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 
-        count: 4 
+        id: 'Festival Combo', 
+        name: 'Festival Combo', 
+        image: './images/festival.jpg', 
+        count: 0
     },
 ];
 
 // Materials data
 const materials = [
-    { id: 'gold', label: 'Gold', count: 6 },
-    { id: 'silver', label: 'Silver', count: 4 },
-    { id: 'rose-gold', label: 'Rose Gold', count: 4 },
-    { id: 'platinum', label: 'Platinum', count: 2 },
-    { id: 'brass', label: 'Brass', count: 2 },
+    { id: 'thin', label: 'Thin', count: 9 },
+    { id: 'medium', label: 'Medium', count: 9 },
+    { id: 'large', label: 'Large', count: 9 },
+    // { id: 'silver', label: 'Silver', count: 4 },
+    // { id: 'rose-gold', label: 'Rose Gold', count: 4 },
+    // { id: 'platinum', label: 'Platinum', count: 2 },
+    // { id: 'brass', label: 'Brass', count: 2 },
 ];
 
 // Rating options
@@ -277,7 +701,7 @@ let state = {
     searchQuery: '',
     selectedCategory: 'all',
     filters: {
-        priceRange: [500, 10000],
+        priceRange: [0, 10000],
         materials: [],
         ratings: [],
         inStock: false,
@@ -456,29 +880,21 @@ function renderProductCard(product) {
                 </div>
 
                 <h3 class="product-title">${product.name}</h3>
-
+                <p>Size: ${product.size}</p>
+                <b>(Quantity: ${product.qty})</b>
+                
                 <div class="product-rating">
-                    <div class="rating-stars">${renderStars(product.rating)}</div>
-                    <span class="rating-text">${product.rating} (${product.reviewCount})</span>
+                <div class="rating-stars">${renderStars(product.rating)}</div>
+                <span class="rating-text">${product.rating} (${product.reviewCount})</span>
                 </div>
-
-                <p class="product-material">${product.material.replace('-', ' ')}</p>
-
+                
+               <!-- <p class="product-material">${product.material.replace('-', ' ')}</p> -->
+                
                 <div class="product-price-row">
-                    <div class="product-price">
-                        <span class="price-current">₹${formatPrice(product.price)}</span>
-                        ${product.originalPrice ? `<span class="price-original">₹${formatPrice(product.originalPrice)}</span>` : ''}
-                    </div>
-                    
-                    <button class="add-to-cart-btn" 
-                            data-product-id="${product.id}" 
-                            ${!product.inStock ? 'disabled' : ''}>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <circle cx="8" cy="21" r="1"></circle>
-                            <circle cx="19" cy="21" r="1"></circle>
-                            <path d="m2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43h-15.44"></path>
-                        </svg>
-                    </button>
+                <div class="product-price">
+                <span class="price-current">₹${formatPrice(product.price)}</span>
+                ${product.originalPrice ? `<span class="price-original">₹${formatPrice(product.originalPrice)}</span>` : ''}
+                </div>
                 </div>
             </div>
         </div>
@@ -582,6 +998,7 @@ function renderCartItems() {
         return;
     }
 
+    // Render cart items
     elements.cartItems.innerHTML = state.cart.map(item => `
         <div class="cart-item">
             <img src="${item.image}" alt="${item.name}" class="cart-item-image">
@@ -615,11 +1032,12 @@ function renderCartItems() {
         </div>
     `).join('');
 
-    // Render cart footer
+    // Calculate totals
     const subtotal = state.cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-    const shipping = subtotal > 2000 ? 0 : 99;
+    const shipping = subtotal > 1000 ? 0 : 99;
     const total = subtotal + shipping;
 
+    // Render cart footer with Checkout button
     elements.cartFooter.innerHTML = `
         <div class="cart-summary">
             <div class="summary-row">
@@ -630,7 +1048,7 @@ function renderCartItems() {
                 <span>Shipping</span>
                 <span style="color: ${shipping === 0 ? '#16a34a' : 'inherit'}">${shipping === 0 ? 'Free' : `₹${shipping}`}</span>
             </div>
-            ${shipping > 0 ? '<p class="free-shipping-note">Free shipping on orders above ₹2,000</p>' : ''}
+            ${shipping > 0 ? '<p class="free-shipping-note">Free shipping on orders above ₹1,000</p>' : ''}
         </div>
         
         <div class="summary-total">
@@ -638,9 +1056,32 @@ function renderCartItems() {
             <span class="total-amount">₹${formatPrice(total)}</span>
         </div>
         
-        <button class="btn btn-primary btn-full btn-lg">Proceed to Checkout</button>
+        <button id="checkoutBtn" class="btn btn-primary btn-full btn-lg">Proceed to Checkout</button>
     `;
+
+    // Add WhatsApp integration for checkout
+    document.getElementById("checkoutBtn").addEventListener("click", function () {
+    let message = "*New Order Details*\n\n";
+
+    state.cart.forEach((item, index) => {
+        message += `${index + 1}. ${item.name} - ${item.material.replace('-', ' ')} x${item.quantity} - ₹${formatPrice(item.price * item.quantity)}\n`;
+    });
+
+    message += `\n*Subtotal:* ₹${formatPrice(subtotal)}`;
+    message += `\n*Shipping:* ${shipping === 0 ? "Free" : "₹" + formatPrice(shipping)}`;
+    message += `\n*Total:* ₹${formatPrice(total)}\n\n`;
+    message += "Please confirm my order !";
+
+    // Encode properly once
+    const encodedMessage = encodeURIComponent(message);
+
+    const phone = "919573537417"; // with country code
+    const url = `https://wa.me/${phone}?text=${encodedMessage}`;
+    window.open(url, "_blank");
+});
+
 }
+
 
 function updateCartCount() {
     const count = state.cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -766,15 +1207,15 @@ function updatePriceRange() {
 
 function clearAllFilters() {
     state.filters = {
-        priceRange: [500, 10000],
+        priceRange: [0, 10000],
         materials: [],
         ratings: [],
         inStock: false,
     };
     
-    elements.priceRangeMin.value = 500;
+    elements.priceRangeMin.value = 0;
     elements.priceRangeMax.value = 10000;
-    elements.priceMin.textContent = '500';
+    elements.priceMin.textContent = '0';
     elements.priceMax.textContent = '10000';
     elements.inStockOnly.checked = false;
     

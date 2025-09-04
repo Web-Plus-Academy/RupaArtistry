@@ -796,13 +796,18 @@ body {
     grid-template-columns: 1fr;
     gap: var(--spacing-lg);
 }
-
+.product-card h3{
+        font-size: 22px;
+}
 @media (max-width: 740px) {
     .product-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 5px;
     }
     .product-card h3{
+        font-size: 16px;
+    }
+    .product-info b{
         font-size: 12px;
     }
     /* .product-card:first-child{
@@ -1033,6 +1038,7 @@ body {
     color: white;
     padding: 10px;
     border: none;
+    background-color: orange;
 }
 
 .add-to-cart-btn svg {
@@ -1056,10 +1062,10 @@ body {
     }
     .add-to-cart-btn{
         width: 30px;
-        /* border: 1px solid black; */
+        border: 1px solid black;
         padding: 20px;
-        /* background-color: orange; */
-        color: black;
+        background-color: orange;
+        color: rgb(255, 255, 255);
         border-radius: 0 10px 10px 0;
     }
 
