@@ -432,11 +432,7 @@ function renderProductCard(product) {
                     ${discount > 0 ? `<span class="badge badge-discount">${discount}% OFF</span>` : ''}
                 </div>
 
-                <button class="wishlist-btn ${isWishlisted ? 'active' : ''}" data-product-id="${product.id}">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="m19 14c4-4 4-10 0-10s-10 6-10 10 6 10 10 0z"></path>
-                    </svg>
-                </button>
+               
 
                 <div class="quick-add">
                     <button class="btn btn-primary btn-full add-to-cart-quick" 
@@ -513,6 +509,8 @@ function renderProductList(product) {
                 </div>
                 
                 <div style="display: flex; flex-direction: column; justify-content: center;">
+
+          
                     <button class="btn btn-primary add-to-cart-btn" 
                             data-product-id="${product.id}" 
                             ${!product.inStock ? 'disabled' : ''} 
@@ -612,9 +610,7 @@ function renderCartItems() {
             </div>
             
             <button class="remove-item" onclick="removeFromCart('${item.id}')">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="m3 6 3 3 3-3v12l-3-3-3 3z"></path>
-                </svg>
+                <img src="./images/deletebtn.png" alt="">
             </button>
         </div>
     `).join('');

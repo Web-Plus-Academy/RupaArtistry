@@ -800,7 +800,18 @@ body {
 @media (max-width: 740px) {
     .product-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
     }
+    .product-card h3{
+        font-size: 12px;
+    }
+    /* .product-card:first-child{
+        border: 2px solid red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+    } */
 }
 
 @media (min-width: 1024px) {
@@ -811,7 +822,7 @@ body {
 
 @media (min-width: 1280px) {
     .product-grid {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -901,16 +912,6 @@ body {
     opacity: 1;
 }
 
-.wishlist-btn svg {
-    width: 1rem;
-    height: 1rem;
-    color: var(--color-muted-foreground);
-}
-
-.wishlist-btn.active svg {
-    color: #dc2626;
-    fill: currentColor;
-}
 
 .quick-add {
     position: absolute;
@@ -1023,14 +1024,15 @@ body {
 }
 
 .add-to-cart-btn {
-    background: none;
-    border: none;
-    color: var(--color-muted-foreground);
     cursor: pointer;
-    /* padding: 2px 5px; */
+    padding: 5px 10px;
     border-radius: var(--radius-md);
     transition: all 0.2s ease;
     font-weight: bold;
+    background-color: white;
+    color: white;
+    padding: 10px;
+    border: none;
 }
 
 .add-to-cart-btn svg {
@@ -1039,9 +1041,31 @@ body {
 }
 
 .add-to-cart-btn:hover {
-    /* border: 2px solid black; */
     background-color: orange;
     color: white;
+}
+
+.add-to-cart-btn-logo{
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    .add-to-cart-btn-logo{
+        display: block;
+    }
+    .add-to-cart-btn{
+        width: 30px;
+        /* border: 1px solid black; */
+        padding: 20px;
+        /* background-color: orange; */
+        color: black;
+        border-radius: 0 10px 10px 0;
+    }
+
+    .add-to-cart-btn svg {
+       display: none;
+    }
 }
 
 /* Shopping Cart */
@@ -1176,12 +1200,14 @@ body {
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
+    margin-left: 10px;
 }
 
 .quantity-btn {
-    background: none;
+    /* background: none; */
+    background-color: orange;
     border: none;
-    color: var(--color-muted-foreground);
+    color: rgb(0, 0, 0);
     cursor: pointer;
     width: 2rem;
     height: 2rem;
@@ -1193,6 +1219,7 @@ body {
 }
 
 .quantity-btn svg {
+    font-weight: bold;
     width: 0.75rem;
     height: 0.75rem;
 }
@@ -1216,11 +1243,13 @@ body {
     cursor: pointer;
     padding: var(--spacing-xs);
     transition: color 0.2s ease;
+    height: 10px;
 }
 
-.remove-item svg {
-    width: 1rem;
-    height: 1rem;
+.remove-item img {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 100%;
 }
 
 .remove-item:hover {
