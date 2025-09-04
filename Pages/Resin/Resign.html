@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Threaded Bangles Shop</title>
+  <style>
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f8f8f8;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* Fixed header */
+    header {
+      background-color: #232f3e;
+      color: white;
+      padding: 1rem 2rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      z-index: 1001;
+    }
+    header h1 {
+      font-weight: 700;
+      margin: 0;
+      font-size: 1.5rem;
+      user-select: none;
+    }
+
+    header input[type="search"] {
+      width: 300px;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      border: none;
+      font-size: 1rem;
+      outline: none;
+      transition: box-shadow 0.3s ease;
+      background: white;
+      color: black;
+    }
+    header input[type="search"]:focus {
+      box-shadow: 0 0 6px #febd69;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 1rem 2rem; /* top padding for fixed header */
+      display: flex;
+    }
+
+    /* Filter panel */
+    aside.filters {
+      width: 260px;
+      background: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      font-size: 0.9rem;
+      position: fixed;
+      top: 65px;
+      bottom: 0;
+      overflow-y: auto;
+      left: 0;
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
+    aside.filters h3 {
+      margin-top: 0;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    .filter-group {
+      margin-bottom: 1.5rem;
+    }
+    .filter-group label {
+      display: block;
+      margin: 0.3rem 0;
+      cursor: pointer;
+    }
+    .filter-group input[type="range"] {
+      width: 100%;
+    }
+
+    /* Products grid with margin-left for sidebar */
+    section.products {
+      margin-left: 280px;
+      flex-grow: 1;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .product-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: box-shadow 0.3s ease;
+    }
+    .product-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .product-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-bottom: 1px solid #eee;
+    }
+    .product-info {
+      padding: 1rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .product-name {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin: 0 0 0.3rem 0;
+      color: #111;
+    }
+    .product-category {
+      font-size: 0.85rem;
+      color: #777;
+      margin-bottom: 0.7rem;
+    }
+    .product-description {
+      font-size: 0.9rem;
+      color: #555;
+      flex-grow: 1;
+      margin-bottom: 0.7rem;
+    }
+    .product-price {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #b12704;
+      margin-bottom: 0.5rem;
+    }
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 0.7rem;
+    }
+    .star {
+      color: #ffa41c;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+    .rating-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #555;
+    }
+    .buy-button {
+      background-color: #febd69;
+      border: none;
+      padding: 0.7rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      color: #111;
+      text-align: center;
+    }
+    .buy-button:hover {
+      background-color: #f3a847;
+    }
+
+    /* Filter toggle button for mobile */
+    #filter-toggle-btn {
+      display: none;
+      position: fixed;
+      top: 65px;
+      left: 10px;
+      z-index: 1100;
+      background-color: #febd69;
+      border: none;
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      main {
+        padding-top: 130px;
+        flex-direction: column;
+        margin: 0 auto;
+      }
+      aside.filters {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 260px;
+        bottom: 0;
+        background: white;
+        padding: 1rem;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+        border-radius: 0 8px 8px 0;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 1100;
+      }
+      aside.filters.open {
+        transform: translateX(0);
+      }
+      section.products {
+        margin-left: 0;
+        padding: 0 1rem;
+      }
+      #filter-toggle-btn {
+        display: block;
+      }
+      header input[type="search"] {
+        width: calc(100% - 60px);
+        max-width: none;
+        font-size: 1rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Rupa's Threaded Bangles</h1>
+  <input type="search" id="search-input" placeholder="Search bangles..." aria-label="Search bangles" />
+  <button id="filter-toggle-btn" aria-expanded="false" aria-controls="filters" aria-label="Toggle filters">Filters</button>
+</header>
+
+<main>
+  <aside class="filters" id="filters" aria-label="Filters">
+    <div class="filter-group">
+      <h3>Category</h3>
+      <label><input type="checkbox" name="category" value="Traditional" checked /> Traditional</label>
+      <label><input type="checkbox" name="category" value="Modern" checked /> Modern</label>
+      <label><input type="checkbox" name="category" value="Fusion" checked /> Fusion</label>
+    </div>
+    <div class="filter-group">
+      <h3>Price Range</h3>
+      <input type="range" id="price-range" min="100" max="2000" step="50" value="2000" />
+      <div>Up to ₹<span id="price-value">2000</span></div>
+    </div>
+    <div class="filter-group">
+      <h3>Ratings</h3>
+      <label><input type="checkbox" name="rating" value="4" checked /> 4 stars & above</label>
+      <label><input type="checkbox" name="rating" value="3" checked /> 3 stars & above</label>
+      <label><input type="checkbox" name="rating" value="2" checked /> 2 stars & above</label>
+    </div>
+  </aside>
+
+  <section class="products" aria-label="Product listings">
+    <div class="products-grid" id="products-grid">
+      <!-- Product Cards injected here -->
+    </div>
+  </section>
+</main>
+
+<script>
+  const products = [
+    {
+      id: 1,
+      name: "Traditional Gold Threaded Bangle",
+      category: "Traditional",
+      description: "Beautifully handcrafted traditional gold threaded bangle perfect for festivals.",
+      price: 1499,
+      rating: 4.5,
+      image: "https://example.com/images/traditional1.jpg"
+    },
+    {
+      id: 2,
+      name: "Modern Silver Threaded Bangle",
+      category: "Modern",
+      description: "Elegant modern silver threaded bangle with sleek finish.",
+      price: 1299,
+      rating: 4.2,
+      image: "https://example.com/images/modern1.jpg"
+    },
+    {
+      id: 3,
+      name: "Fusion Colorful Threaded Bangle Set",
+      category: "Fusion",
+      description: "Vibrant set of threaded bangles inspired by modern and traditional fusion.",
+      price: 1799,
+      rating: 4.8,
+      image: "https://example.com/images/fusion1.jpg"
+    },
+    {
+      id: 4,
+      name: "Minimalist Threaded Bangle",
+      category: "Modern",
+      description: "Minimalistic and stylish threaded bangle for daily wear.",
+      price: 999,
+      rating: 3.9,
+      image: "https://example.com/images/modern2.jpg"
+    },
+    {
+      id: 5,
+      name: "Traditional Threaded Bangle with Stones",
+      category: "Traditional",
+      description: "Traditional style bangle adorned with beautiful stones.",
+      price: 1599,
+      rating: 4.3,
+      image: "https://example.com/images/traditional2.jpg"
+    }
+  ];
+
+  // DOM elements
+  const productsGrid = document.getElementById('products-grid');
+  const searchInput = document.getElementById('search-input');
+  const categoryCheckboxes = document.querySelectorAll('input[name="category"]');
+  const ratingCheckboxes = document.querySelectorAll('input[name="rating"]');
+  const priceRange = document.getElementById('price-range');
+  const priceValue = document.getElementById('price-value');
+  const filterToggleBtn = document.getElementById('filter-toggle-btn');
+  const filtersSidebar = document.getElementById('filters');
+
+  // Format price in INR
+  const formatPrice = (p) => `₹${p.toLocaleString('en-IN')}`;
+
+  // Create star rating elements
+  function createStars(rating) {
+    const floorRating = Math.floor(rating);
+    const halfStar = rating - floorRating >= 0.5;
+    let starsHTML = '';
+
+    for(let i=1; i<=5; i++) {
+      if(i <= floorRating) starsHTML += '★'; 
+      else if(i === floorRating + 1 && halfStar) starsHTML += '☆'; 
+      else starsHTML += '☆';
+    }
+    return starsHTML;
+  }
+
+  // Render products based on filters and search
+  function renderProducts() {
+    const selectedCategories = Array.from(categoryCheckboxes)
+      .filter(chk => chk.checked)
+      .map(chk => chk.value);
+
+    const selectedRatings = Array.from(ratingCheckboxes)
+      .filter(chk => chk.checked)
+      .map(chk => Number(chk.value));
+
+    const maxPrice = Number(priceRange.value);
+    priceValue.textContent = maxPrice;
+
+    const searchTerm = searchInput.value.trim().toLowerCase();
+
+    const filtered = products.filter(p => {
+      // Category filter
+      if (!selectedCategories.includes(p.category)) return false;
+
+      // Rating filter
+      const minRating = Math.min(...selectedRatings);
+      if (p.rating < minRating) return false;
+
+      // Price filter
+      if (p.price > maxPrice) return false;
+
+      // Search filter
+      if (searchTerm && !p.name.toLowerCase().includes(searchTerm) && !p.description.toLowerCase().includes(searchTerm)) {
+        return false;
+      }
+
+      return true;
+    });
+
+    productsGrid.innerHTML = filtered.length > 0 ? filtered.map(p => `
+      <article class="product-card" tabindex="0" aria-label="${p.name} bangle">
+        <img src="${p.image}" alt="${p.name}" class="product-img" loading="lazy" />
+        <div class="product-info">
+          <h2 class="product-name">${p.name}</h2>
+          <p class="product-category">${p.category} Bangles</p>
+          <p class="product-description">${p.description}</p>
+          <p class="product-price">${formatPrice(p.price)}</p>
+          <div class="product-rating" aria-label="Rating: ${p.rating} out of 5 stars">
+            <span class="star" aria-hidden="true">${createStars(p.rating)}</span>
+            <span class="rating-value">${p.rating.toFixed(1)}</span>
+          </div>
+          <button class="buy-button" aria-label="Buy ${p.name}">Buy Now</button>
+        </div>
+      </article>
+    `).join('') : '<p>No bangles match your filters or search.</p>';
+  }
+
+  // Toggle filters sidebar on mobile
+  filterToggleBtn.addEventListener('click', () => {
+    const expanded = filterToggleBtn.getAttribute('aria-expanded') === 'true';
+    filterToggleBtn.setAttribute('aria-expanded', !expanded);
+    filtersSidebar.classList.toggle('open');
+  });
+
+  // Close sidebar when clicking outside on mobile
+  document.body.addEventListener('click', (e) => {
+    if(window.innerWidth <= 900 && filtersSidebar.classList.contains('open')) {
+      if (!filtersSidebar.contains(e.target) && e.target !== filterToggleBtn) {
+        filtersSidebar.classList.remove('open');
+        filterToggleBtn.setAttribute('aria-expanded', 'false');
+      }
+    }
+  });
+
+  // Event Listeners
+  searchInput.addEventListener('input', renderProducts);
+  categoryCheckboxes.forEach(chk => chk.addEventListener('change', renderProducts));
+  ratingCheckboxes.forEach(chk => chk.addEventListener('change', renderProducts));
+  priceRange.addEventListener('input', renderProducts);
+
+  // Initial render
+  renderProducts();
+</script>
+
+</body>
+</html>

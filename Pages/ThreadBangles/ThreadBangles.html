@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThreadedLux - Exquisite Threaded Bangles</title>
+    <meta name="description" content="Discover our curated collection of handcrafted threaded bangles, where traditional artistry meets contemporary elegance.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+              <a href="../../index.html">
+                <img src="../../images/ram-logo.png" height="50" alt="">
+              </a>
+                <div class="logo">
+                    <h1> Rupa's Thread Bangles</h1>
+                </div>
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <div class="search-wrapper">
+                        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <input type="text" id="searchInput" placeholder="Search bangles..." class="search-input">
+                    </div>
+                </div>
+
+                <!-- Cart & Mobile Menu -->
+                <div class="header-actions">
+                    <button class="cart-btn" id="cartBtn">
+                        <img src="https://cdn-icons-png.flaticon.com/512/846/846423.png" height="30" alt="">
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <!-- <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <line x1="4" x2="20" y1="6" y2="6"></line>
+                            <line x1="4" x2="20" y1="12" y2="12"></line>
+                            <line x1="4" x2="20" y1="18" y2="18"></line>
+                        </svg> -->
+                        <svg class="close-icon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="m18 6-12 12"></path>
+                            <path d="m6 6 12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+
+
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Exquisite
+                    <span class="hero-subtitle">Threaded Bangles</span>
+                </h1>
+                <p class="hero-description">
+                    Discover our curated collection of handcrafted threaded bangles, 
+                    where traditional artistry meets contemporary elegance.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#categories"><button class="btn btn-primary hero-btn">Shop Collection</button></a>
+                    <a href="#contact"><button class="btn btn-outline hero-btn">Contact Us</button></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Navigation -->
+    <section id="categories" class="categories">
+        <div class="container">
+            <h2 class="section-title">Shop by Category</h2>
+            <div class="category-grid" id="categoryGrid">
+                <!-- Categories will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="main-content">
+        <div class="container">
+            <div class="content-wrapper">
+                <!-- Filter Sidebar -->
+                <aside class="filter-sidebar" id="filterSidebar">
+                    <div class="filter-header">
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <polygon points="22,3 2,3 10,12.46 10,19 14,21 14,12.46"></polygon>
+                            </svg>
+                            Filters
+                        </h3>
+                        <button class="close-filters" id="closeFilters">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="m18 6-12 12"></path>
+                                <path d="m6 6 12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Price Range -->
+                    <div class="filter-group">
+                        <label class="filter-label">Price Range: ₹<span id="priceMin">500</span> - ₹<span id="priceMax">10000</span></label>
+                        <div class="price-range">
+                            <input type="range" id="priceRangeMin" min="500" max="10000" value="500" step="100">
+                            <input type="range" id="priceRangeMax" min="500" max="10000" value="10000" step="100">
+                        </div>
+                    </div>
+
+                    <!-- Materials -->
+                    <div class="filter-group">
+                        <label class="filter-label">Material</label>
+                        <div class="checkbox-group" id="materialFilters">
+                            <!-- Material checkboxes will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Ratings -->
+                    <div class="filter-group">
+                        <label class="filter-label">Rating</label>
+                        <div class="checkbox-group" id="ratingFilters">
+                            <!-- Rating checkboxes will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Stock -->
+                    <div class="filter-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="inStockOnly">
+                            <span class="checkmark"></span>
+                            In Stock Only
+                        </label>
+                    </div>
+
+                    <button class="btn btn-outline btn-full" id="clearFilters">Clear All Filters</button>
+                </aside>
+
+                <!-- Product Area -->
+                <main class="product-area">
+                    <!-- Toolbar -->
+                    <div class="toolbar">
+                        <div class="toolbar-left">
+                            <button class="btn btn-outline filter-toggle" id="filterToggle">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <polygon points="22,3 2,3 10,12.46 10,19 14,21 14,12.46"></polygon>
+                                </svg>
+                                Filters
+                            </button>
+                            <span class="product-count" id="productCount">0 products found</span>
+                        </div>
+
+                        <div class="toolbar-right">
+                            <div class="sort-container">
+                                <span>Sort by:</span>
+                                <select id="sortSelect" class="sort-select">
+                                    <option value="relevance">Relevance</option>
+                                    <option value="price-low">Price: Low to High</option>
+                                    <option value="price-high">Price: High to Low</option>
+                                    <option value="rating">Highest Rated</option>
+                                    <option value="newest">Newest First</option>
+                                </select>
+                            </div>
+
+                            <div class="view-toggle">
+                                <button class="view-btn active" id="gridView">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <rect width="7" height="7" x="3" y="3" rx="1"></rect>
+                                        <rect width="7" height="7" x="14" y="3" rx="1"></rect>
+                                        <rect width="7" height="7" x="14" y="14" rx="1"></rect>
+                                        <rect width="7" height="7" x="3" y="14" rx="1"></rect>
+                                    </svg>
+                                </button>
+                                <button class="view-btn" id="listView">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <line x1="8" x2="21" y1="6" y2="6"></line>
+                                        <line x1="8" x2="21" y1="12" y2="12"></line>
+                                        <line x1="8" x2="21" y1="18" y2="18"></line>
+                                        <line x1="3" x2="3.01" y1="6" y2="6"></line>
+                                        <line x1="3" x2="3.01" y1="12" y2="12"></line>
+                                        <line x1="3" x2="3.01" y1="18" y2="18"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Grid -->
+                    <div class="product-grid" id="productGrid">
+                        <!-- Products will be populated by JavaScript -->
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Shopping Cart</h2>
+            <button class="close-cart" id="closeCart">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="m18 6-12 12"></path>
+                    <path d="m6 6 12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be populated by JavaScript -->
+        </div>
+        <div class="cart-footer" id="cartFooter">
+            <!-- Cart footer will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3 class="footer-title">Rupa's Artisanal Moments</h3>
+                    <p class="footer-description">
+                        Connecting hearts through handmade art. Every piece tells a story,
+                        every story creates a moment, every moment becomes a cherished memory.
+                    </p>
+                    <div class="social-buttons">
+                        <a href="https://www.instagram.com/rupas_artisanal_moments?utm_source=qr&igsh=MzB6OXhveDdpNWk5">
+                            <button class="btn btn-secondary btn-large">
+                                Instagram <img src="./images/insta.png" height="30" alt="">
+                            </button>
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="footer-links">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-nav">
+                        <li><a href="../../index.html#about">About Us</a></li>
+                        <li><a href="../../index.html#crafts">Our Crafts</a></li>
+                        <li><a href="../../index.html#story">Our Story</a></li>
+                        <li><a href="../../index.html#contact">Contact</a></li>
+                    </ul>
+        
+                </div>
+
+                <div class="footer-contact">
+                    <h4 class="footer-heading">Get in Touch</h4>
+                    <p class="contact-text">
+                        Ready to bring artisanal beauty into your life? Let's create something beautiful together.
+                    </p>
+                    <a href="https://www.instagram.com/rupas_artisanal_moments?utm_source=qr&igsh=MzB6OXhveDdpNWk5"><button class="btn btn-secondary btn-large btn-full">Support Our Journey</button></a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Rupa's Artisanal Moments | Crafted with love and tradition.</p>
+                <b>Powered by <a href="https://saredufywpa.com/">#SWPA</a></b> 🤍 <b>Dev. by <a href="https://webnexz.in/">WebNexZ Solutions</a></b>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+<button id="backToTop" title="Go to top">↑</button>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
